@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fake news detection page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>NLP Processed Text..</h1>
+    <form method="post">
+        <textarea name="text" rows="6" cols="60" placeholder="Paste the news here.." required></textarea>
+        <br>
+        <button type="submit">Analyze Text</button>
+    </form>
+
+    {% if tokens %}
+
+    <h3>Tokens:</h3>
+    <p>{{ tokens }}</p>
+
+    <h3>Lemmas:</h3>
+    <p>{{ lemmas }}</p>
+
+    <h3>Entities:</h3>
+    <ul>
+        {% for e in entities %}
+        <li>{{ e[0] }} - {{ e[1] }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
+</body>
+</html>
